@@ -1,0 +1,67 @@
+cookie:
+  expiry_days: 14
+  key: mcat
+  name: simple_auth_cookie
+credentials:
+  usernames:
+    ak:
+      admin: true
+      logged_in: true
+      name: Avi Klausner
+      password: $2b$12$uQA0qcMFgsaqvgcDJYy2luThVJsAwJIlLmPhlXEUVJezp3mqpsMSy
+      team: Coach
+    corky:
+      admin: false
+      name: Amiel Jakowitz
+      password: $2b$12$aOhA8yVQP877gn1pRoVit.gEZGLNJFdhx6EE8LcUItix/c6n8tVMa
+      team: White
+    danny:
+      admin: false
+      name: Danny Missaghi
+      password: $2b$12$UDJbSSLmsC48CbPv.1XkqON4ibHLt2kUN1wHtJfXqSd9i9oMgOg4i
+      team: Blue
+    dz:
+      admin: false
+      name: Daniel Zilber
+      password: $2b$12$y1ro1zRgiT4EYiGfhLGQN.fxJmXxYaxBXJtBuX6d/kfJfyLGJ4IEe
+      team: Blue
+    ed:
+      admin: true
+      name: Ed Gelb
+      password: $2b$12$qhNtPxDbTO/AlSRybSkBm.CiIVTThctvsPEcuAe9T1gS4Qw7M2QGu
+      team: Coach
+    ezra:
+      admin: false
+      name: Ezra Weiss
+      password: $2b$12$iLGrw6zHvjmsLAK6m7.2ge858HjVlfQ3QHT7TtlXbG5o8e3jy9JRG
+      team: White
+    itai:
+      admin: false
+      name: Itai Weinograd
+      password: $2b$12$6WC3WiQQaTMzoHabHbmrG.jAP2R.HiTSZk6NrKU3ZLrsS/nit1ciC
+      team: Blue
+    jj:
+      admin: false
+      name: JJ Rapolino
+      password: $2b$12$eBQeQwHp3RUtvTZnOBIpGODZVrzC/fUSOU4x0t2UV0jJbgFWN/BLi
+      team: Blue
+    mordy:
+      admin: false
+      name: Mordy Feder
+      password: $2b$12$jMZy5cXB0rnxsR9nDw7Ggusy40q.Hu7St9wHBhr3gWgcZTS8FzIHG
+      team: Blue
+    sammy:
+      admin: false
+      name: Sammy Marcus
+      password: $2b$12$hxKFm2RlD89WlLv2eEwtX.tYsG9vHyXsozlSF/cNk0KeX1Ug2LdMe
+      team: White
+    swan:
+      admin: false
+      name: Ariel Jesselsohn
+      password: $2b$12$8l7pdEMzngx1tdt0h.FwAuZiv585JBgZseexhe24cwOHebDhoavY.
+      team: White
+    yak:
+      admin: false
+      name: Yakir Samuels
+      password: $2b$12$4pq5V9M0Mjwv6wiSODf6LeVa4UpwdDtLcC48tHZFyBQO.OtZyXYRK
+      team: White
