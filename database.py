@@ -19,43 +19,49 @@ def init_db():
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 username TEXT NOT NULL,
                 team TEXT NOT NULL,
-                run_index INTEGER NOT NULL,
-                elapsed_seconds REAL NOT NULL,
+                sprint_number INTEGER NOT NULL,
+                time REAL NOT NULL,
                 saved_at TEXT NOT NULL
             )
         """)
         conn.commit()
 
-def get_next_index(username: str) -> int:
+def get_next_sprint_number(username: str) -> int:
     conn = get_conn()
+    today = datetime.now(timezone.utc).date()
     with closing(conn.cursor()) as cur:
-        cur.execute("SELECT MAX(run_index) FROM times WHERE username = ?", (username,))
+        cur.execute("""
+            SELECT MAX(sprint_number)
+            FROM times
+            WHERE username = ?
+              AND DATE(saved_at) = ?
+        """, (username, today.isoformat()))
         result = cur.fetchone()[0]
         return (result or 0) + 1
 
-def save_time(username: str, team: str, elapsed_seconds: float):
-    run_index = get_next_index(username)
+def save_time(username: str, team: str, time: float):
+    sprint_number = get_next_sprint_number(username)
     conn = get_conn()
     with closing(conn.cursor()) as cur:
         cur.execute("""
-            INSERT INTO times (username, team, run_index, elapsed_seconds, saved_at)
+            INSERT INTO times (username, team, sprint_number, time, saved_at)
             VALUES (?, ?, ?, ?, ?)
-        """, (username, team, run_index, elapsed_seconds, datetime.now(timezone.utc).isoformat()))
+        """, (username, team, sprint_number, time, datetime.now(timezone.utc).isoformat()))
         conn.commit()
 
 def load_times() -> pd.DataFrame:
     conn = get_conn()
     return pd.read_sql_query(
         """
-        SELECT username, team, run_index, elapsed_seconds, saved_at
+        SELECT username, team, sprint_number, time, saved_at
         FROM times
-        ORDER BY team, elapsed_seconds ASC
+        ORDER BY time ASC
         """,
         conn
     )
 
-def delete_time(username: str, run_index: int):
+def delete_time(username: str, sprint_number: int):
     conn = get_conn()
     with closing(conn.cursor()) as cur:
-        cur.execute("DELETE FROM times WHERE username = ? AND run_index = ?", (username, run_index))
+        cur.execute("DELETE FROM times WHERE username = ? AND sprint_number = ?", (username, sprint_number))
         conn.commit()

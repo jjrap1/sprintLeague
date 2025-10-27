@@ -1,4 +1,5 @@
 .venv
 *.db-shm
 *.db-wal
-.idea
+.idea/*
+__pycache__/*
